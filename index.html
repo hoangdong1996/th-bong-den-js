@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Công tăc và bóng đèn</title>
+</head>
+<body>
+
+<div id="congtac"></div>
+<div id="bongden"></div>
+<button onclick="congtac.switchOn()">Bật công tắc</button>
+<button onclick="congtac.switchOff()">Tắt công tắc</button>
+<button onclick="bongden.electricLam(congtac)">Xem bóng đèn</button>
+
+<script>
+    let SwitchButton = function (status) {
+        this.status = status;
+
+        this.switchOff = function () {
+             this.status = false;
+             document.getElementById("congtac").innerText = "Công tắc đóng"
+        };
+
+        this.switchOn = function () {
+             this.status = true;
+            document.getElementById("congtac").innerText = "Công tắc mở"
+        }
+    };
+
+    let ElectricLamp = function (status) {
+        this.status = status;
+
+        this.electricLam = function (switchButton) {
+            if (switchButton.status) {
+                document.getElementById("bongden").innerText = "Bóng đèn sáng"
+            } else {
+                document.getElementById("bongden").innerText = "Bóng đèn tối"
+            }
+        }
+    };
+
+    let congtac = new SwitchButton(false);
+    let bongden = new ElectricLamp(false);
+
+</script>
+
+</body>
+</html>
